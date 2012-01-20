@@ -9,9 +9,27 @@
 gem install thekeystone
 ```
 
-Usage Example
--------------
+#  Usage Examples
 
+Creating a new user account
+---------------------------
 
+``` ruby
+require "thekeystone"
+
+api = TheKeyStone.new('[your API key]');
+
+new_user = api.signup(:email => "sean@wixel.net", :password => "mypassword")
+
+if !new_user
+	puts api.last_error
+else
+	pp api.get_user(new_user["uid"])
+end
+
+```
+
+Creating a new user account
+---------------------------
 
 
