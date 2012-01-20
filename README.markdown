@@ -46,7 +46,7 @@ gem install thekeystone
     <td>profile_data(uid, field)</td><td>Retrieve a profile field from a user account</td><td>Hash on success, false on failure</td>
   </tr>
   <tr>
-    <td>find_by_email(email)</td><td>Find a user account using an email address</td><td>Hash on success, false on failure</td>
+    <td>search_by_email(email)</td><td>Find a user account using an email address</td><td>Hash on success, false on failure</td>
   </tr>
   <tr>
     <td>reset_password(uid, new_password)</td><td>Reset a user account password</td><td>true on success, false on failure</td>
@@ -167,7 +167,7 @@ Keep in mind that you can only find one account at a time and queries are only s
 request. 
 
 ``` ruby
-user = api.find_by_email('me@me.com')
+user = api.search_by_email('me@me.com')
 ```
 
 Resetting user passwords
