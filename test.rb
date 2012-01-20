@@ -21,32 +21,8 @@ user = api.signup(:email => "sean@wasdasdasdadasdixel.net", :password => "deldia
 
 pp api.get_user(user["uid"])
 
-#puts user.class
-
-#puts api.last_error
-# LOGIN USER
-#user = api.signin(:email => 'seasn@isean.co.za', :password => 'deldialer')
-#if !user
-#  puts api.last_error
-#else
-#  pp user
-#end
-#pp api.signin(:email => 'seasn@isean.co.za', :password => 'deldialer')
-# => {"uid"=>"4f19494e601cae0001000001"}
 
 
-
-
-
-# GET USER PROFILE
-#pp api.get_user('4f194c79601cae0001000002')
-#puts api.last_error
-
-# SIGNUP USER
-#new_user = api.signup(:email => "sean@wixel.net", :password => "deldialer")
-
-# VERIFY USER
-#puts api.verify_user('4f194c79601cae0001000002') => true/false
 
 
 

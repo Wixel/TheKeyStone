@@ -57,7 +57,8 @@ require "thekeystone"
 
 api = TheKeyStone.new('[your API key]');
 
-new_user = api.signup(:email => "me@me.com", :password => "mypassword") # => {"uid"=>"4f19494e601cae0001000001"}
+new_user = api.signup(:email => "me@me.com", :password => "mypassword") 
+# new_user = {"uid"=>"4f19494e601cae0001000001"}
 
 if !new_user
 	puts api.last_error
@@ -124,6 +125,17 @@ profile = api.get_user('[a user id]')
 }
 
 ```
+
+Update a users profile
+----------------------
+You are able to update multiple fields in a single request.
+
+``` ruby
+api.update_user("[a user ID]", :twitter => "@SeanNieuwoudt", :github => "http://github.com/organizations/Wixel")
+
+```
+
+
 
 
 

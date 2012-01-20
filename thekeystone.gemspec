@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.email       = 'sean@wixel.net'
   s.files       = ["lib/thekeystone.rb"]
   s.homepage    =
-    'http://rubygems.org/gems/thekeystone'
+    'http://github.com/Wixel/TheKeyStone'
 end
