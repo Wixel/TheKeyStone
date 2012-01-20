@@ -88,6 +88,7 @@ end
 
 Verify a user account
 ---------------------
+This is an optional feature that is present incase your application requires user verification.
 
 ``` ruby
 api.verify_user('[a user id]') # => true/false
@@ -95,6 +96,7 @@ api.verify_user('[a user id]') # => true/false
 
 Fetch a user profile
 --------------------
+Keep in mind that all profile fields are returned as a Ruby hash. 
 
 ``` ruby
 profile = api.get_user('[a user id]')
