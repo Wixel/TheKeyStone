@@ -17,7 +17,10 @@ require 'pp'
 
 api = TheKeyStone.new('e23da4dd60a0779a9f781a1650d13b4a');
 
-user = api.signup(:email => "sean@wasdasdixel.net", :password => "deldialer")
+user = api.signup(:email => "sean@wasdasdasdadasdixel.net", :password => "deldialer")
+
+pp api.get_user(user["uid"])
+
 #puts user.class
 
 #puts api.last_error
@@ -41,18 +44,6 @@ user = api.signup(:email => "sean@wasdasdixel.net", :password => "deldialer")
 
 # SIGNUP USER
 #new_user = api.signup(:email => "sean@wixel.net", :password => "deldialer")
-
-#pp new_user
-
-#if !new_user
-#  puts api.last_error
-#else
-#  puts "User ID: #{new_user["uid"]}"
-#  puts "-----------------------------------"
-#  puts "User Profile:"
-#  pp api.get_user(new_user["uid"])
-#end
-
 
 # VERIFY USER
 #puts api.verify_user('4f194c79601cae0001000002') => true/false
