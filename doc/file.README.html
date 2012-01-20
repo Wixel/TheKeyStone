@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Getting Started</h1>
+
+<p><em>TheKeyStone is an API wrapper around Wixels hosted user authentication and management service.</em></p>
+
+<ol>
+<li>Go to http://thegatekeeper.wixelhq.com and request access to the service</li>
+<li>Once you receive your API key, please keep it a secret</li>
+</ol>
+
+<p><code>ruby
+gem install thekeystone
+</code></p>
+
+<h1>Available Methods</h1>
+
+<table>
+  <tr>
+    <th>Method</th><th>Description</th><th>Return Type</th>
+  </tr>
+  <tr>
+    <td>set_api_key(api_key)</td><td>Set the API key</td><td>None</td>
+  </tr>
+  <tr>
+    <td>get_user(id)</td><td>Fetch a use profile</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>signup(params={})</td><td>Perform the user sign up and return new user ID</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>signin(params={})</td><td>Signin a user and return the user ID</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>verify_user(uid)</td><td>Verify a user account (optional)</td><td>true on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>update_user(uid, params={})</td><td>Update a user profile</td><td>true on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>generate_onetime_login_hash(email)</td><td>Generate a onetime login hash</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>signin_with_hash(hash)</td><td>Sign in using a one-time login hash</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>delete_user(uid)</td><td>Delete a user account</td><td>true on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>profile_data(uid, field)</td><td>Retrieve a profile field from a user account</td><td>Hash on success, false on failure</td>
+  </tr>
+</table>
+
+<h1>Usage Examples</h1>
+
+<h2>Creating a new user account</h2>
+
+<p>``` ruby
+require &quot;thekeystone&quot;</p>
+
+<p>api = TheKeyStone.new(&#39;[your API key]&#39;);</p>
+
+<p>new_user = api.signup(:email =&gt; &quot;me@me.com&quot;, :password =&gt; &quot;mypassword&quot;) </p>
+
+<h1>new_user = &amp;quot;uid&amp;quot;=&amp;gt;&amp;quot;4f19494e601cae0001000001&amp;quot;</h1>
+
+<p>if !new<em>user
+    puts api.last</em>error
+else
+    pp api.get<em>user(new</em>user[&quot;uid&quot;]) 
+end
+```</p>
+
+<h2>Authenticate a user</h2>
+
+<p>``` ruby
+user = api.signin(:email =&gt; &quot;me@me.com&quot;, :password =&gt; &quot;mypassword&quot;)</p>
+
+<p>if !user
+    puts api.last<em>error
+else
+    pp api.get</em>user(user[&quot;uid&quot;]) # you should store user[&quot;uid&quot;] in your session at this point
+end
+```</p>
+
+<h2>Verify a user account</h2>
+
+<p><code>ruby
+api.verify_user(&#39;[a user id]&#39;) # =&gt; true/false
+</code></p>
+
+<h2>Fetch a user profile</h2>
+
+<p>``` ruby
+profile = api.get_user(&#39;[a user id]&#39;)</p>
+
+<h1>Response:</h1>
+
+<p>{
+ &quot;email&quot;=&gt;&quot;test@me.com&quot;,
+ &quot;username&quot;=&gt;nil,
+ &quot;full<em>name&quot;=&gt;&quot;&quot;,
+ &quot;timezone&quot;=&gt;&quot;London&quot;,
+ &quot;twitter&quot;=&gt;&quot;&quot;,
+ &quot;facebook&quot;=&gt;&quot;&quot;,
+ &quot;github&quot;=&gt;&quot;&quot;,
+ &quot;linkedin&quot;=&gt;&quot;&quot;,
+ &quot;about&quot;=&gt;&quot;&quot;,
+ &quot;latlng&quot;=&gt;&quot;&quot;,
+ &quot;gender&quot;=&gt;&quot;&quot;,
+ &quot;phone&quot;=&gt;&quot;&quot;,
+ &quot;address&quot;=&gt;&quot;&quot;,
+ &quot;user</em>api<em>key&quot;=&gt;&quot;7801cba92f3fe4b5a00070316ed66aac&quot;,
+ &quot;converted&quot;=&gt;false,
+ &quot;conversion</em>date&quot;=&gt;nil,
+ &quot;last_login&quot;=&gt;&quot;2012-01-20T14:05:05+00:00&quot;
+}
+```</p>
+
+<h2>Update a users profile</h2>
+
+<p>You are able to update multiple fields in a single request.</p>
+
+<p><code>ruby
+api.update_user(
+    &quot;[a user ID]&quot;, :twitter =&gt; &quot;@SeanNieuwoudt&quot;, :github =&gt; &quot;http://github.com/organizations/Wixel&quot;
+)
+</code></p>
+
+<h2>Using the one-time log in hash</h2>
+
+<p>A one-time log in hash is used when a user has forgotten their password. Your user enters their email 
+address on your site and you pass it along to the API. A log in hash will be generated and returned.</p>
+
+<p>You will need to email this to the user and allow them to log in by clicking on a link that 
+re-connects to the API and authenticates the user using the hash.</p>
+
+<p>This hash can only be used once and is destroyed after usage.</p>
+
+<p>``` ruby
+hash = api.generate<em>onetime</em>login_hash(&#39;test@me.com&#39;) </p>
+
+<h1>hash = &amp;quot;login_hash&amp;quot;=&amp;gt;&amp;quot;a9ce493328c52dfdebbc4d1776881dc7&amp;quot;</h1>
+
+<p>user = api.signin<em>with</em>hash(hash[&quot;login_hash&quot;])</p>
+
+<h1>user = &amp;quot;uid&amp;quot;=&amp;gt;&amp;quot;4f197491912c0c000100003f&amp;quot;</h1>
+
+<p>```</p>
+
+<h2>Fetching profile information</h2>
+
+<p>If you need to fetch the entire user profile in a single request, please use the api.get_user method instead. </p>
+
+<p>``` ruby
+data = api.profile_data(&#39;[a user ID]&#39;, &#39;email&#39;)</p>
+
+<h1>data = &amp;quot;email&amp;quot;=&amp;gt;&amp;quot;sean@wasdasdasdadasdixel&amp;quot;email&amp;quot;=&amp;gt;&amp;quot;sean@wasdasdasdadasdixel.net&amp;quot;</h1>
+
+<p>```</p>
+</div></div>
+    
+    <div id="footer">
+  Generated on Fri Jan 20 17:00:25 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
