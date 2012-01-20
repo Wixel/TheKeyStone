@@ -6,7 +6,8 @@ class TheKeyStone
   attr_accessor :last_error, :last_error_code
   
   GATEKEEPER_API_VERSION = 1
-  GATEKEEPER_API_URL     = "http://thegatekeeper.wixelhq.com"
+  #GATEKEEPER_API_URL     = "http://thegatekeeper.wixelhq.com"
+  GATEKEEPER_API_URL     = "http://127.0.0.1:9292"
 
   # Initialize the class and set the API key for this instance.
   #
@@ -153,6 +154,37 @@ class TheKeyStone
       @last_error_code = e.http_code
       false
     end    
+  end
+  
+  # Search for a user account by email
+  # 
+  # @param [String] the email address to search for
+  # @return [Hash] the user account hash
+  def search_by_email(email)
+    begin
+      JSON.parse(RestClient.get construct_url("user/search/by_email/#{email}"))
+    rescue RestClient::BadRequest => e      
+      puts e.http_body
+      @last_error = e.http_body
+      @last_error_code = e.http_code
+      false
+    end
+  end
+  
+  # Reset a user account password
+  #
+  # @param [String] the user ID
+  # @param [String] the new password to be saved
+  # @return [Boolean]
+  def reset_password(uid, new_password)
+    begin
+      RestClient.post construct_url("user/#{uid}/reset_password"), {:password => new_password}
+      true
+    rescue RestClient::BadRequest => e
+      @last_error = e.http_body
+      @last_error_code = e.http_code
+      false
+    end
   end
   
   private

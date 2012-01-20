@@ -103,9 +103,22 @@
         <dd><pre class="code"><span class='int'>1</span></pre></dd>
       
         <dt id="GATEKEEPER_API_URL-constant" class="">GATEKEEPER_API_URL =
-          
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+GATEKEEPER_API_URL     = &#8220;<a
+href="http://thegatekeeper.wixelhq.com">thegatekeeper.wixelhq.com</a>&#8220;
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://thegatekeeper.wixelhq.com</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://127.0.0.1:9292</span><span class='tstring_end'>&quot;</span></span></pre></dd>
       
     </dl>
   
@@ -297,6 +310,54 @@ Initialize the class and set the API key for this instance.
   
     <span class="summary_desc"><div class='inline'><p>
 Fetch individual profile fields.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_password-instance_method" title="#reset_password (instance method)">- (Boolean) <strong>reset_password</strong>(uid, new_password) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Reset a user account password.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#search_by_email-instance_method" title="#search_by_email (instance method)">- (Hash) <strong>search_by_email</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Search for a user account by email.
 </p>
 </div></span>
   
@@ -499,14 +560,14 @@ valid API key
       <pre class="lines">
 
 
-14
 15
 16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_api_key'>api_key</span><span class='rparen'>)</span>
   <span class='ivar'>@api_key</span> <span class='op'>=</span> <span class='id identifier rubyid_api_key'>api_key</span>
@@ -675,7 +736,6 @@ valid user ID
       <pre class="lines">
 
 
-132
 133
 134
 135
@@ -684,10 +744,11 @@ valid user ID
 138
 139
 140
-141</pre>
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_user'>delete_user</span><span class='lparen'>(</span><span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -769,7 +830,6 @@ the generated one-time log in hash
       <pre class="lines">
 
 
-104
 105
 106
 107
@@ -777,10 +837,11 @@ the generated one-time log in hash
 109
 110
 111
-112</pre>
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_onetime_login_hash'>generate_onetime_login_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -861,7 +922,6 @@ a user profile
       <pre class="lines">
 
 
-31
 32
 33
 34
@@ -869,10 +929,11 @@ a user profile
 36
 37
 38
-39</pre>
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user'>get_user</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -970,7 +1031,6 @@ the requested data
       <pre class="lines">
 
 
-148
 149
 150
 151
@@ -978,10 +1038,11 @@ the requested data
 153
 154
 155
-156</pre>
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 149</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_profile_data'>profile_data</span><span class='lparen'>(</span><span class='id identifier rubyid_uid'>uid</span><span class='comma'>,</span> <span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -991,6 +1052,205 @@ the requested data
     <span class='ivar'>@last_error_code</span> <span class='op'>=</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_code'>http_code</span>
     <span class='kw'>false</span>
   <span class='kw'>end</span>    
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="reset_password-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reset_password</strong>(uid, new_password) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Reset a user account password
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>the</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+user ID
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>the</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+new password to be saved
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 179</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_password'>reset_password</span><span class='lparen'>(</span><span class='id identifier rubyid_uid'>uid</span><span class='comma'>,</span> <span class='id identifier rubyid_new_password'>new_password</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='const'>RestClient</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span> <span class='id identifier rubyid_construct_url'>construct_url</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_uid'>uid</span><span class='rbrace'>}</span><span class='tstring_content'>/reset_password</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_new_password'>new_password</span><span class='rbrace'>}</span>
+    <span class='kw'>true</span>
+  <span class='kw'>rescue</span> <span class='const'>RestClient</span><span class='op'>::</span><span class='const'>BadRequest</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='ivar'>@last_error</span> <span class='op'>=</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_body'>http_body</span>
+    <span class='ivar'>@last_error_code</span> <span class='op'>=</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_code'>http_code</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="search_by_email-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>search_by_email</strong>(email) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Search for a user account by email
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>the</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+email address to search for
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the user account hash
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_search_by_email'>search_by_email</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'>RestClient</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span> <span class='id identifier rubyid_construct_url'>construct_url</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user/search/by_email/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_email'>email</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>RestClient</span><span class='op'>::</span><span class='const'>BadRequest</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>      
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_body'>http_body</span>
+    <span class='ivar'>@last_error</span> <span class='op'>=</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_body'>http_body</span>
+    <span class='ivar'>@last_error_code</span> <span class='op'>=</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_http_code'>http_code</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1043,12 +1303,12 @@ valid API key
       <pre class="lines">
 
 
-23
 24
-25</pre>
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_api_key'>set_api_key</span><span class='lparen'>(</span><span class='id identifier rubyid_api_key'>api_key</span><span class='rparen'>)</span>
   <span class='ivar'>@api_key</span> <span class='op'>=</span> <span class='id identifier rubyid_api_key'>api_key</span>
@@ -1123,7 +1383,6 @@ the user ID hash
       <pre class="lines">
 
 
-59
 60
 61
 62
@@ -1131,10 +1390,11 @@ the user ID hash
 64
 65
 66
-67</pre>
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signin'>signin</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1215,7 +1475,6 @@ the user ID
       <pre class="lines">
 
 
-118
 119
 120
 121
@@ -1223,10 +1482,11 @@ the user ID
 123
 124
 125
-126</pre>
+126
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signin_with_hash'>signin_with_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1307,7 +1567,6 @@ the new user ID hash
       <pre class="lines">
 
 
-45
 46
 47
 48
@@ -1315,10 +1574,11 @@ the new user ID hash
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_signup'>signup</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1410,7 +1670,6 @@ updated profile fields and values
       <pre class="lines">
 
 
-89
 90
 91
 92
@@ -1419,10 +1678,11 @@ updated profile fields and values
 95
 96
 97
-98</pre>
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_user'>update_user</span><span class='lparen'>(</span><span class='id identifier rubyid_uid'>uid</span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1498,7 +1758,6 @@ user ID
       <pre class="lines">
 
 
-73
 74
 75
 76
@@ -1507,10 +1766,11 @@ user ID
 79
 80
 81
-82</pre>
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/thekeystone.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_user'>verify_user</span><span class='lparen'>(</span><span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1532,7 +1792,7 @@ user ID
 </div>
     
     <div id="footer">
-  Generated on Fri Jan 20 17:00:25 2012 by 
+  Generated on Fri Jan 20 18:43:21 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.4 (ruby-1.9.2).
 </div>

@@ -45,6 +45,12 @@ gem install thekeystone
   <tr>
     <td>profile_data(uid, field)</td><td>Retrieve a profile field from a user account</td><td>Hash on success, false on failure</td>
   </tr>
+  <tr>
+    <td>find_by_email(email)</td><td>Find a user account using an email address</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>reset_password(uid, new_password)</td><td>Reset a user account password</td><td>true on success, false on failure</td>
+  </tr>
 </table>
 
 #  Usage Examples
@@ -153,7 +159,17 @@ data = api.profile_data('[a user ID]', 'email')
 # data = {"email"=>"sean@wasdasdasdadasdixel.net"}
 ```
 
+Finding users by email
+----------------------
+``` ruby
+user = api.find_by_email('me@me.com')
+```
 
+Resetting user passwords
+------------------------
+``` ruby
+api.reset_password('[a user ID]','my_password2')
+```
 
 
 

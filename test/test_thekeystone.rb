@@ -13,7 +13,7 @@ class TheKeyStoneTest < Test::Unit::TestCase
     create_instance
     
     # Test Invalid Email Signup
-    invalid_email = @api.signup(:email => "invalid password", :password => "my_password")
+    invalid_email = @api.signup(:email => "invalid email", :password => "my_password")
     assert_equal "Validation failed - Email is invalid.", @api.last_error
     assert_equal false, invalid_email
         
@@ -86,6 +86,46 @@ class TheKeyStoneTest < Test::Unit::TestCase
     # Update the account
     data = @api.profile_data(user["uid"], :email)
     assert_equal Hash, data.class       
+    
+    # Delete the new account
+    deleted = @api.delete_user(user["uid"])
+    assert_equal true, deleted
+  end
+  
+  def test_password_reset
+    puts "Testing password reset..."        
+    
+    create_instance    
+    
+    # Create the new account
+    user = @api.signup(:email => "testaccount_0@test.com", :password => "my_password")
+    assert_equal Hash, user.class   
+    
+    # Reset the password
+    reset = @api.reset_password(user["uid"],'my_password2')
+    assert_equal true, reset
+    
+    # Re-log in
+    user = @api.signin(:email => "testaccount_0@test.com", :password => "my_password2")
+    assert_equal Hash, user.class   
+    
+    # Delete the new account
+    deleted = @api.delete_user(user["uid"])
+    assert_equal true, deleted
+  end
+  
+  def test_email_search
+    puts "Testing email search..."        
+    
+    create_instance    
+    
+    # Create the new account
+    user = @api.signup(:email => "testaccount_0@test.com", :password => "my_password")
+    assert_equal Hash, user.class   
+    
+    # Search by email
+    search = @api.search_by_email("testaccount_0@test.com")
+    assert_equal Hash, search.class   
     
     # Delete the new account
     deleted = @api.delete_user(user["uid"])
