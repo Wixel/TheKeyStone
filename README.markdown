@@ -16,13 +16,25 @@ gem install thekeystone
     <th>Method</th><th>Description</th><th>Return Type</th>
   </tr>
   <tr>
-    <td>set_api_key(api_key)</td><td>Set the API key</td><td>nil</td>
+    <td>set_api_key(api_key)</td><td>Set the API key</td><td>None</td>
   </tr>
   <tr>
-    <td>get_user(id)</td><td>Fetch a use profile</td><td>Hash</td>
+    <td>get_user(id)</td><td>Fetch a use profile</td><td>Hash on success, false on failure</td>
   </tr>
   <tr>
-    <td>signup(params={})</td><td>Perform the user sign up and return new user ID</td><td>Hash</td>
+    <td>signup(params={})</td><td>Perform the user sign up and return new user ID</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>signin(params={})</td><td>Signin a user and return the user ID</td><td>Hash on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>verify_user(uid)</td><td>Verify a user account (optional)</td><td>true on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>update_user(uid, params={})</td><td>Update a user profile</td><td>true on success, false on failure</td>
+  </tr>
+  <tr>
+    <td>generate_onetime_login_hash(uid)</td><td>Generate a onetime login hash</td><td>Hash on success, false on failure</td>
   </tr>
 
 </table>
