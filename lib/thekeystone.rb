@@ -8,18 +8,26 @@ class TheKeyStone
   GATEKEEPER_API_VERSION = 1
   GATEKEEPER_API_URL     = "http://thegatekeeper.wixelhq.com"
 
+  # Initialize the class and set the API key for this instance.
+  #
+  # @param [String] a valid API key
   def initialize(api_key)
     @api_key = api_key
     @last_error = ""
     @last_error_code = ""    
   end
   
+  # Set/Change the API key for this instance.
+  #
+  # @param [String] a valid API key
   def set_api_key(api_key)
     @api_key = api_key
   end
   
-  # Fetch a user profile from the API
+  # Fetch a complete user profile from the service.
   #
+  # @param [String] the user ID
+  # @return [Hash] a user profile
   def get_user(id)
     begin
       user = JSON.parse(RestClient.get construct_url("user/#{id}"))
@@ -30,8 +38,10 @@ class TheKeyStone
     end
   end
   
-  # Perform the user signup
+  # Create a new user account and return the ID
   #
+  # @param [Hash] the signup parameters: email, password, (any other profile fields)
+  # @return [Hash] the new user ID hash
   def signup(params={})
     begin
       JSON.parse(RestClient.put construct_url("user"), params)
@@ -42,8 +52,10 @@ class TheKeyStone
     end
   end
   
-  # Perform the user sign in & return the UID
-  #
+  # Authenticate a user
+  # 
+  # @param [Hash] the signin parameters: email, password
+  # @return [Hash] the user ID hash
   def signin(params={})
     begin
       JSON.parse(RestClient.post construct_url("user/signin"), params)
@@ -54,8 +66,10 @@ class TheKeyStone
     end
   end
   
-  # Verify a user account
+  # Verify a created user account (optional step depending on your app flow)
   #
+  # @param [String] the user ID
+  # @return [Boolean] 
   def verify_user(uid)
     begin
       RestClient.get construct_url("user/verify/#{uid}")
@@ -69,6 +83,9 @@ class TheKeyStone
   
   # Update a user profile
   #
+  # @param [String] the user ID
+  # @param [Hash] the updated profile fields and values
+  # @return [Boolean]
   def update_user(uid, params={})
     begin
       RestClient.post construct_url("user/#{uid}"), params
@@ -82,6 +99,8 @@ class TheKeyStone
   
   # Generate & return the one-time login hash
   #
+  # @param [String] the registered users email address
+  # @return [Hash] the generated one-time log in hash
   def generate_onetime_login_hash(email)
     begin
       JSON.parse(RestClient.get construct_url("user/generate_one_time_hash/#{email}"))
@@ -94,6 +113,8 @@ class TheKeyStone
   
   # Signin with the one-time login hash
   #
+  # @param [String] the generated one-time login hashs
+  # @return [Hash] the user ID
   def signin_with_hash(hash)
     begin
       JSON.parse(RestClient.get construct_url("user/signin_with_hash/#{hash}"))
@@ -106,6 +127,8 @@ class TheKeyStone
   
   # Delete a user account
   #
+  # @param [String] a valid user ID
+  # @return [Boolean]
   def delete_user(uid)
     begin
       RestClient.delete construct_url("user/#{uid}")
@@ -117,8 +140,11 @@ class TheKeyStone
     end    
   end
   
-  # Fetch profile data for a user, one column at a time
+  # Fetch individual profile fields
   #
+  # @param [String] the user ID
+  # @param [String] the field to return
+  # @return [Hash] the requested data
   def profile_data(uid, field)
     begin
       JSON.parse(RestClient.get construct_url("user/#{uid}/#{field}"))
