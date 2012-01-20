@@ -9,6 +9,24 @@
 gem install thekeystone
 ```
 
+#  Available Methods
+
+<table>
+  <tr>
+    <th>Method</th><th>Description</th><th>Return Type</th>
+  </tr>
+  <tr>
+    <td>set_api_key(api_key)</td><td>Set the API key</td><td>nil</td>
+  </tr>
+  <tr>
+    <td>get_user(id)</td><td>Fetch a use profile</td><td>Hash</td>
+  </tr>
+  <tr>
+    <td>signup(params={})</td><td>Perform the user sign up and return new user ID</td><td>Hash</td>
+  </tr>
+
+</table>
+
 #  Usage Examples
 
 Creating a new user account
