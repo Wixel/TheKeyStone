@@ -44,7 +44,7 @@ class TheKeyStoneTest < Test::Unit::TestCase
     assert_equal Hash, user.class
     
     # Generate the hash
-    hash = @api.generate_onetime_login_hash(user['uid']) 
+    hash = @api.generate_onetime_login_hash("testaccount_0@test.com") 
     assert_equal Hash, hash.class
     
     # Signin with the hash

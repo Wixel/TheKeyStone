@@ -82,9 +82,9 @@ class TheKeyStone
   
   # Generate & return the one-time login hash
   #
-  def generate_onetime_login_hash(uid)
+  def generate_onetime_login_hash(email)
     begin
-      JSON.parse(RestClient.get construct_url("user/generate_one_time_hash/#{uid}"))
+      JSON.parse(RestClient.get construct_url("user/generate_one_time_hash/#{email}"))
     rescue RestClient::BadRequest => e
       @last_error = e.http_body
       @last_error_code = e.http_code

@@ -17,32 +17,22 @@ require 'pp'
 
 api = TheKeyStone.new('e23da4dd60a0779a9f781a1650d13b4a');
 
-user = api.signup(:email => "sean@wasdasdasdadasdixel.net", :password => "deldialer")
+#user = api.signup(:email => "sean@wasdasdasdadasdixel.net", :password => "deldialer")
 
-pp api.get_user(user["uid"])
-
-
+#pp api.get_user(user["uid"])
 
 
 
-
-# Update user account
-#puts api.update_user("4f194c79601cae0001000002", :twitter => "SeanNieuwoudt", :facebook => "SeanNieuwoudt")
-#pp api.get_user('4f194c79601cae0001000002')
-
-
-# Generate Login Hash
-#puts api.generate_onetime_login_hash('4f194c79601cae0001000002')
-
-# LOGIN WITH HASH
-#puts api.signin_with_hash('1966b4c7dcc7f671720703a3e259f2b3')
+#hash = api.generate_onetime_login_hash("sean@wasdasdasdadasdixel.net")
+#3user = api.signin_with_hash(hash["login_hash"])
+#pp user
 
 # DELETE A USER
 #puts api.delete_user('4f194c79601cae0001000002')
 #pp api.get_user('4f194c79601cae0001000002')
 
 # FETCH PROFILE FIELD
-#pp api.profile_data('4f195b4811983e0001000001', 'email')
+pp api.profile_data('4f197491912c0c000100003f', 'email')
 
 
 
