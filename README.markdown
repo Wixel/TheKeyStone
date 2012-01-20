@@ -161,6 +161,9 @@ data = api.profile_data('[a user ID]', 'email')
 
 Finding users by email
 ----------------------
+Keep in mind that you can only find one account at a time and queries are only specific to one API key per 
+request. 
+
 ``` ruby
 user = api.find_by_email('me@me.com')
 ```
@@ -168,7 +171,7 @@ user = api.find_by_email('me@me.com')
 Resetting user passwords
 ------------------------
 ``` ruby
-api.reset_password('[a user ID]','my_password2')
+api.reset_password('[a user ID]','my_new_password')
 ```
 
 
