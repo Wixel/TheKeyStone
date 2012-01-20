@@ -6,8 +6,7 @@ class TheKeyStone
   attr_accessor :last_error, :last_error_code
   
   GATEKEEPER_API_VERSION = 1
-  #GATEKEEPER_API_URL     = "http://thegatekeeper.wixelhq.com"
-  GATEKEEPER_API_URL     = "http://127.0.0.1:9292"
+  GATEKEEPER_API_URL     = "http://thegatekeeper.wixelhq.com"
 
   # Initialize the class and set the API key for this instance.
   #
