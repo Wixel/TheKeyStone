@@ -128,20 +128,20 @@ api.update_user(
 
 Using the one-time log in hash
 ------------------------------
-A one-time log in has is used when a user has forgotten their password. Your user enters their email 
+A one-time log in hash is used when a user has forgotten their password. Your user enters their email 
 address on your site and you pass it along to the API. A log in hash will be generated and returned.
 
 You will need to email this to the user and allow them to log in by clicking on a link that 
-re-connects to the API and authenticates the user. 
+re-connects to the API and authenticates the user using the hash.
 
 This hash can only be used once and is destroyed after usage.
 
 ``` ruby
-	hash = api.generate_onetime_login_hash('test@me.com') 
-	# hash = {"login_hash"=>"a9ce493328c52dfdebbc4d1776881dc7"}
+hash = api.generate_onetime_login_hash('test@me.com') 
+# hash = {"login_hash"=>"a9ce493328c52dfdebbc4d1776881dc7"}
 	
-	user = api.signin_with_hash(hash["login_hash"])
-	# user = {"uid"=>"4f197491912c0c000100003f"}
+user = api.signin_with_hash(hash["login_hash"])
+# user = {"uid"=>"4f197491912c0c000100003f"}
 ```
 
 Fetching profile information
@@ -149,8 +149,8 @@ Fetching profile information
 If you need to fetch the entire user profile in a single request, please use the api.get_user method instead. 
 
 ``` ruby
-	data = api.profile_data('[a user ID]', 'email')
-	# data = {"email"=>"sean@wasdasdasdadasdixel.net"}
+data = api.profile_data('[a user ID]', 'email')
+# data = {"email"=>"sean@wasdasdasdadasdixel.net"}
 ```
 
 
