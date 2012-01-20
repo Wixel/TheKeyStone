@@ -163,7 +163,6 @@ class TheKeyStone
     begin
       JSON.parse(RestClient.get construct_url("user/search/by_email/#{email}"))
     rescue RestClient::BadRequest => e      
-      puts e.http_body
       @last_error = e.http_body
       @last_error_code = e.http_code
       false

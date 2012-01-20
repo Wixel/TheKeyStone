@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'thekeystone'
-  s.version     = '0.5.2'
+  s.version     = '0.5.3'
   s.date        = '2012-01-20'
   s.summary     = "TheGateKeeper authentication client"
   s.description = "TheKeyStone is used to access TheGateKeeper - a hosted user authentication & management service"
