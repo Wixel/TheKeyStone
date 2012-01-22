@@ -2,3 +2,4 @@
 *.gem
 .yardoc
 test.rb
+pkg
